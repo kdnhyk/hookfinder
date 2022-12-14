@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import Card from "./Card";
-import Naver from "../assets/Naver.png";
-import Firebase from "../assets/Firebase.png";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { originCardsState } from "../store/Cards";
 
 const MainBlock = styled.main`
@@ -26,7 +24,8 @@ const MainBlock = styled.main`
 export default function Main() {
   console.log("Main");
 
-  const [cards] = useRecoilState(originCardsState);
+  const cards = useRecoilValue(originCardsState);
+
   return (
     <MainBlock>
       <div className="CardsWrapper">

@@ -3,7 +3,14 @@ import naver from "../public/assets/naver.png";
 import firebase from "../public/assets/firebase.png";
 import loading from "../public/assets/loading.png";
 
-const cardsState = atom({
+interface IsCard {
+  id: number;
+  src: any;
+  title: string;
+  sort: "API" | "Materials";
+}
+
+const cardsState = atom<IsCard[]>({
   key: "cardsState",
   default: [
     { id: 0, src: naver, title: "Naver", sort: "API" },
@@ -22,7 +29,7 @@ const cardsState = atom({
   ],
 });
 
-export const originCardsState = selector({
+export const originCardsState = selector<IsCard[]>({
   key: "originCardsState",
   get: ({ get }) => {
     const cards = get(cardsState);
